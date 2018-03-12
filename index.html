@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Practicas JS</title>
+        <style>
+            ul{
+                list-style: none;
+            }
+            li{
+                padding: 8px;
+            }
+            .azul{
+                background: blue;
+            }
+            .verde{
+                background: green;
+            }
+            .rojo{
+                background: red;
+            }
+            .open{
+                color: deeppink;
+                font-weight: bold;
+            }
+            .closed{
+                color: yellow;
+            }
+            .extended:after{
+                content:' * ';
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hola mundo</h1>
+        <ul>
+            <li class="azul open">Open</li>
+            <li class="rojo open extended">Open - Ext</li>
+            <li class="verde closed">Closed</li>
+            <li class="rojo closed">Closed</li>
+            <li class="azul open">Open</li>
+            <li class="verde closed">Closed</li>
+            <li class="azul open extended">Open - Ext</li>
+            <li class="rojo closed extended">Closed - Ext</li>
+            <li class="verde closed">Closed</li>
+            <li class="rojo open extended">Open - Ext</li>
+        </ul>
+        <label for="rojo">Rojo</label>
+        <input id="rojo" type="checkbox" name="tipo" value="rojo"><br />
+        <label for="azul">Azul</label>
+        <input id="azul" type="checkbox" name="tipo" value="azul"><br />
+        <label for="verde">Verde</label>
+        <input id="verde" type="checkbox" name="tipo" value="verde"><br />
+        <label for="rojo">Open</label>
+        <input id="rojo" type="checkbox" name="tipo" value="open"><br />
+        <label for="closed">Closed</label>
+        <input id="closed" type="checkbox" name="tipo" value="closed"><br />
+        <label for="ext">Extended</label>
+        <input id="ext" type="checkbox" name="tipo" value="extended"><br />
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script>
+            $('input[type="checkbox"]').change( function(e){
+                var name = $(this);
+                if (name.prop('checked') == true){
+                    $('.' + name.val()).slideUp();
+                }else{
+                    $('.' + name.val()).slideDown();
+                }
+            })
+            
+        </script>
+    </body>
+</html>

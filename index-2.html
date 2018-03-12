@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <style>
+            h1{
+                font-size: 32px;
+                font-weight: 900;
+            }
+            h1#contador{
+                font-size: 120px;
+            }
+            .registro{
+                margin-bottom: 18px;
+            }
+            .badge:hover{
+                background: orange;
+                cursor: pointer;
+            }
+            .badge.active{
+                background: #00ff00;
+            }
+            .registro{
+                padding: 12px;
+            }
+            .registro.closed{
+                background: gray;
+                color: white;
+
+            }
+            .registro p{
+                margin: 0px;
+            }
+            .closed.itinerario-a{
+                border-right: 20px solid blue;
+            }
+            .closed.itinerario-b{
+                border-right: 20px solid orange;
+            }
+            .closed.itinerario-c{
+                border-right: 20px solid red;
+            }
+            .closed.itinerario-d{
+                border-right: 20px solid #00ff00;
+            }
+            .closed .btn-book {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <hr />
+                <ul class="list-inline text-center">
+                    <li>
+                        <span class="badge bg-info text-center" data-view="display" data-value="open">OPEN</span>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <span class="badge bg-info text-center active" data-view="ship" data-value="0">ALL</span>
+                    </li>
+                    <li>
+                        <span class="badge bg-info text-center" data-view="ship" data-value="BAR003">LEGEND</span>
+                    </li>
+                    <li>
+                        <span class="badge bg-info text-center" data-view="ship" data-value="BAR001">CORALS</span>
+                    </li>
+                    <li>|</li>
+                    <li class="bg-info">
+                        <span class="badge text-center active" data-view="itinerario" data-value="0">ALL</span>
+                    </li>
+                    <li class="bg-info">
+                        <span class="badge text-center" data-view="itinerario" data-value="a">A</span>
+                    </li>
+                    <li class="bg-warning">
+                        <span class="badge text-center" data-view="itinerario" data-value="b">B</span>
+                    </li>
+                    <li class="bg-danger">
+                        <span class="badge text-center" data-view="itinerario" data-value="c">C</span>
+                    </li>
+                    <li class="bg-success">
+                        <span class="badge text-center" data-view="itinerario" data-value="d">D</span>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <span class="badge bg-info text-center active" data-view="duracion" data-value="0">ALL</span>
+                    </li>
+                    <li>
+                        <span class="badge bg-info text-center" data-view="duracion" data-value="4">4/D</span>
+                    </li>
+                    <li>
+                        <span class="badge bg-info text-center" data-view="duracion" data-value="8">8/D</span>
+                    </li>
+                    <li>
+                        <span class="badge bg-info text-center" data-view="duracion" data-value="11">11/D</span>
+                    </li>
+                </ul>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div id="registros" class="row">
+                        <div class="col-xs-12 registro BAR003 bg-success open itinerario-d itinerario-a duration-8">
+                            <span>LEGEND | D - A | 5 - 8 | OPEN |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-info open itinerario-c itinerario-d itinerario-a duration-4 duration-8 duration-11 extended">
+                            <span>CORALS | C - D - A | 4 - 8 - 11 | OPEN</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-warning closed itinerario-b duration-4 extended">
+                            <span>CORALS | B | 4 | CLOSED | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-danger open itinerario-c itinerario-d duration-11">
+                            <span>LEGEND | C - D | 11 | OPEN |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-danger open itinerario-c duration-4">
+                            <span>CORALS | C | 4 | OPEN |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-warning closed itinerario-b duration-8">
+                            <span>LEGEND | B | 8 | CLOSED |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-success open itinerario-d duration-8 extended">
+                            <span>CORALS | D | 8 | OPEN | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-danger closed itinerario-c duration-4">
+                            <span>CORALS | C | 4 | CLOSED |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-info closed itinerario-a duration-11 extended">
+                            <span>CORALS | A | 11 | CLOSED | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-success closed itinerario-d duration-4">
+                            <span>LEGEND | D | 4 | CLOSED |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-info open itinerario-a duration-8 extended">
+                            <span>CORALS | A | 8 | OPEN | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-warning open itinerario-b duration-4 extended">
+                            <span>LEGEND | B | 4 | OPEN | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-danger closed itinerario-c duration-4">
+                            <span>CORALS | C | 4 | CLOSED |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-info closed itinerario-a duration-8">
+                            <span>CORALS | A | 8 | CLOSED |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-success open itinerario-d duration-4">
+                            <span>CORALS | D | 4 | OPEN |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-warning open itinerario-b duration-11">
+                            <span>LEGEND | B | 11 | OPEN |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-danger closed itinerario-c duration-11">
+                            <span>LEGEND | C | 11 | CLOSED |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR003 bg-info open itinerario-a duration-4 extended">
+                            <span>LEGEND | A | 4 | OPEN | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR003" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-warning closed itinerario-b duration-4 extended">
+                            <span>CORALS | B | 4 | CLOSED | EXTENDED</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <div class="col-xs-12 registro BAR001 bg-danger open itinerario-c duration-11">
+                            <span>CORALS | C | 11 | OPEN |</span>
+                            <button type="button" class="pull-right btn-book" data-date="1234567890" data-ship="BAR001" data-itinerario="d" data-duration="8">Book</button>
+                        </div>
+                        <!-- mensaje de cero resultados -->
+                        <div class="mensaje hidden">
+                            <h2>No hay resultados en esa combinacion</h2>
+                        </div>
+                        <!-------------------------------->
+                    </div>  
+                </div>
+                <div class="col-xs-4 text-center">
+                    <h1>CONTADOR</h1>
+                    <h1 id="contador">0</h1>
+                    <p>Enviando</p>
+                    <pre id="datos" class="text-left"></pre>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script>
+            var view = '';
+            var ship = '';
+            var itinerario = '';
+            var duracion = '';
+            var query = '';
+            var cuantos = '';
+
+            $('#contador').html( $('.registro').length );
+
+            $('.badge').click( function() {
+                var elemento = $(this);
+                //detectar que tipo de elemento es
+
+                switch( elemento.data('view') ){
+                    case 'display':
+                        elemento.toggleClass('active');
+                        if ( elemento.hasClass('active') ){
+                            view = '.' + elemento.data('value');
+                        }else{
+                            view = '';
+                        }
+                        break;
+                    case 'ship':
+                        $('[data-view="ship"]').removeClass('active');
+                        elemento.toggleClass('active');
+                        if ( elemento.hasClass('active') && elemento.data('value') != 0 ){
+                            ship = '.' + elemento.data('value');
+                        }else{
+                            ship = '';
+                        }
+                        break;
+                    case 'itinerario':
+                        $('[data-view="itinerario"]').removeClass('active');
+                        elemento.toggleClass('active');
+                        if ( elemento.hasClass('active') && elemento.data('value') != 0 ){
+                            itinerario = '.itinerario-' + elemento.data('value');
+                        }else{
+                            itinerario = '';
+                        }
+                        break;
+                    case 'duracion':
+                        $('[data-view="duracion"]').removeClass('active');
+                        elemento.toggleClass('active');
+                        if ( elemento.hasClass('active') && elemento.data('value') != 0 ){
+                            duracion = '.duration-' + elemento.data('value');
+                        }else{
+                            duracion = '';
+                        }
+                        break;
+                }
+                
+                query = view + ship + itinerario + duracion;
+                
+                if (query){
+                    $('.registro').hide('fast');
+                    $(query).show('fast');
+                    cuantos = $(query).length;
+                }else{
+                    cuantos = $('.registro').length;
+                    $('.registro').show('fast');
+                }
+                
+                if( cuantos == 0 ){
+                    $('.mensaje').removeClass('hidden');
+                }else{
+                    $('.mensaje').addClass('hidden');
+                }
+                
+                $('#contador').html(cuantos);
+                console.log(query, cuantos);
+
+            })
+
+            $('.btn-book').click( function(){
+                var html = '';
+
+                html = '<p>Fecha: ' + $(this).data('date') + '</p>';
+                html += '<p>Barco: ' + $(this).data('ship') + '</p>';
+                html += '<p>Fecha: ' + $(this).data('itinerario') + '</p>';
+                html += '<p>Duracion: ' + $(this).data('duration') + '</p>';
+
+                $('#datos').html( html );
+
+            })
+        </script>
+    </body>
+</html>
